@@ -1619,12 +1619,13 @@ impl<T, A: Allocator> Vec<T, A> {
 
     /// Converts the vector into a boxed slice.
     ///
+    /// This conversion is in-place if `vec.len() == vec.capacity()`.
+    ///
     /// Before doing the conversion, this method adjusts the vector's allocation as
     /// needed so that, if a backing allocation is present, the layout of the returned
     /// slice [*fits*] that allocation. Thus, the vector's former capacity is not needed
     /// to determine a layout suitable for deallocation.
     ///
-    /// [owned slice]: Box
     /// [*fits*]: crate::alloc::Allocator#memory-fitting
     ///
     /// # Examples
